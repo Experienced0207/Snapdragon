@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="100%" height="320">
+  <defs>
+    <linearGradient id="panelBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0096d6"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <style>
+      .hdr {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        fill: #94a3b8;
+      }
+      .card-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        fill: #ffffff;
+      }
+      .card-sub {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        fill: #38bdf8;
+      }
+      .metric {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 600;
+        fill: #10b981;
+      }
+
+      /* Animated Data Flow Pulses */
+      @keyframes flowDash {
+        from { stroke-dashoffset: 60; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes packetTravel {
+        0% { transform: translateX(0px); opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { transform: translateX(130px); opacity: 0; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 2px #06b6d4); }
+        50% { opacity: 1; filter: drop-shadow(0 0 8px #06b6d4); }
+      }
+
+      .pipe-line {
+        stroke: #334155;
+        stroke-width: 2;
+      }
+      .pipe-active {
+        stroke: url(#flowGrad);
+        stroke-width: 2.5;
+        stroke-dasharray: 8 6;
+        animation: flowDash 1.2s linear infinite;
+      }
+      .node-pulse {
+        animation: pulseGlow 2.5s ease-in-out infinite;
+      }
+      .data-packet {
+        fill: #38bdf8;
+        animation: packetTravel 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Container -->
+  <rect x="2" y="2" width="996" height="316" rx="16" fill="url(#panelBg)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Top Title -->
+  <text x="30" y="32" class="hdr">END-TO-END PIPELINE SIGNAL FLOW (SUB-50MS DUAL-DEVICE RUNTIME)</text>
+
+  <!-- Flow Lines (Background) -->
+  <line x1="200" y1="140" x2="250" y2="140" class="pipe-active"/>
+  <line x1="390" y1="140" x2="440" y2="140" class="pipe-active"/>
+  <line x1="580" y1="140" x2="630" y2="140" class="pipe-active"/>
+  <line x1="770" y1="140" x2="820" y2="140" class="pipe-active"/>
+
+  <!-- STAGE 1: Video Capture -->
+  <g transform="translate(30, 60)">
+    <rect width="170" height="180" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#020617" stroke="#0096d6" stroke-width="1.5"/>
+    <!-- Camera Icon -->
+    <circle cx="26" cy="26" r="5" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="31" cy="20" r="1" fill="#38bdf8"/>
+
+    <text x="12" y="64" class="card-title">1. Client Vision</text>
+    <text x="12" y="82" class="card-sub">MediaPipe Tasks</text>
+    <text x="12" y="98" class="card-sub">WebAssembly Engine</text>
+
+    <line x1="12" y1="116" x2="158" y2="116" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="136" class="hdr">SAMPLING RATE</text>
+    <text x="12" y="154" class="metric">30.0 FPS Sustained</text>
+    <text x="12" y="170" class="card-sub" fill="#64748b">Latency: ~3.8 ms</text>
+  </g>
+
+  <!-- STAGE 2: Spatial Feature Vector -->
+  <g transform="translate(220, 60)">
+    <rect width="170" height="180" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#020617" stroke="#06b6d4" stroke-width="1.5"/>
+    <!-- Grid/Tensor Icon -->
+    <rect x="18" y="18" width="16" height="16" rx="2" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+    <line x1="26" y1="18" x2="26" y2="34" stroke="#06b6d4" stroke-width="1"/>
+    <line x1="18" y1="26" x2="34" y2="26" stroke="#06b6d4" stroke-width="1"/>
+
+    <text x="12" y="64" class="card-title">2. Invariant Tensor</text>
+    <text x="12" y="82" class="card-sub">Pose: 33 x 4 = 132</text>
+    <text x="12" y="98" class="card-sub">Hands: 2 x 21 x 3 = 126</text>
+
+    <line x1="12" y1="116" x2="158" y2="116" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="136" class="hdr">TENSOR SHAPE</text>
+    <text x="12" y="154" class="metric">[30, 258] Uniform</text>
+    <text x="12" y="170" class="card-sub" fill="#64748b">Zero-Padded / Resampled</text>
+  </g>
+
+  <!-- STAGE 3: Temporal Transformer (NPU/CoreML) -->
+  <g transform="translate(410, 60)">
+    <rect width="170" height="180" rx="12" fill="url(#cardGrad)" stroke="#0096d6" stroke-width="2" class="node-pulse"/>
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#020617" stroke="#10b981" stroke-width="1.5"/>
+    <!-- Chip Icon -->
+    <rect x="18" y="18" width="16" height="16" rx="3" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1.5"/>
+    <circle cx="26" cy="26" r="3" fill="#10b981"/>
+
+    <text x="12" y="64" class="card-title">3. Sign Inference</text>
+    <text x="12" y="82" class="card-sub">ONNX / QNN Runtime</text>
+    <text x="12" y="98" class="card-sub">Hexagon NPU / CoreML</text>
+
+    <line x1="12" y1="116" x2="158" y2="116" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="136" class="hdr">EXECUTION SPEED</text>
+    <text x="12" y="154" class="metric">4.82 ms (NPU)</text>
+    <text x="12" y="170" class="card-sub" fill="#64748b">Memory: 14.6 MB</text>
+  </g>
+
+  <!-- STAGE 4: NLP Sentence Reconstruction -->
+  <g transform="translate(600, 60)">
+    <rect width="170" height="180" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#020617" stroke="#a855f7" stroke-width="1.5"/>
+    <!-- Terminal / Text Icon -->
+    <path d="M 18 21 L 24 26 L 18 31" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+    <line x1="26" y1="31" x2="33" y2="31" stroke="#c084fc" stroke-width="1.5"/>
+
+    <text x="12" y="64" class="card-title">4. Grammar Engine</text>
+    <text x="12" y="82" class="card-sub">ISL SOV to SVO</text>
+    <text x="12" y="98" class="card-sub">Quantized Edge LLM</text>
+
+    <line x1="12" y1="116" x2="158" y2="116" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="136" class="hdr">RECONSTRUCTION</text>
+    <text x="12" y="154" class="metric">"I need water."</text>
+    <text x="12" y="170" class="card-sub" fill="#64748b">Latency: ~2.1 ms</text>
+  </g>
+
+  <!-- STAGE 5: Voice Synthesis (TTS) -->
+  <g transform="translate(790, 60)">
+    <rect width="180" height="180" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5"/>
+    <rect x="12" y="12" width="28" height="28" rx="6" fill="#020617" stroke="#38bdf8" stroke-width="1.5"/>
+    <!-- Speaker Waveform Icon -->
+    <path d="M 17 23 L 22 23 L 27 18 L 27 34 L 22 29 L 17 29 Z" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+    <path d="M 30 22 C 32 24 32 28 30 30" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+
+    <text x="12" y="64" class="card-title">5. Neural TTS</text>
+    <text x="12" y="82" class="card-sub">16-bit PCM Audio</text>
+    <text x="12" y="98" class="card-sub">Local Web Audio Play</text>
+
+    <line x1="12" y1="116" x2="168" y2="116" stroke="#334155" stroke-width="1"/>
+    <text x="12" y="136" class="hdr">SPEECH PLAYBACK</text>
+    <text x="12" y="154" class="metric">WAV Stream Real-time</text>
+    <text x="12" y="170" class="card-sub" fill="#64748b">Total E2E: &lt; 25 ms</text>
+  </g>
+</svg>

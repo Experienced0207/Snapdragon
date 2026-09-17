@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="100%" height="240">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Accent Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0096d6"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <style>
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+        font-size: 46px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        fill: #ffffff;
+      }
+      .subtitle-text {
+        font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        fill: #38bdf8;
+      }
+      .badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      @keyframes pulseBeam {
+        0% { opacity: 0.3; stroke-dashoffset: 200; }
+        50% { opacity: 1; }
+        100% { opacity: 0.3; stroke-dashoffset: 0; }
+      }
+      @keyframes beaconBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.9); }
+      }
+      @keyframes sweepScan {
+        0% { transform: translateX(-100px); opacity: 0; }
+        50% { opacity: 0.6; }
+        100% { transform: translateX(1000px); opacity: 0; }
+      }
+      .scanner {
+        animation: sweepScan 4s ease-in-out infinite;
+      }
+      .beam {
+        stroke-dasharray: 20, 10;
+        animation: pulseBeam 3s linear infinite;
+      }
+      .beacon {
+        transform-origin: center;
+        animation: beaconBlink 2s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="2" y="2" width="996" height="236" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Scanning Light Ray -->
+  <line x1="0" y1="2" x2="120" y2="2" stroke="url(#borderGrad)" stroke-width="4" class="scanner" />
+
+  <!-- Top Accent Highlight -->
+  <path d="M 16 2 L 984 2" stroke="url(#borderGrad)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Grid Tech Pattern (Subtle) -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <line x1="40" y1="30" x2="40" y2="210"/>
+    <line x1="80" y1="30" x2="80" y2="210"/>
+    <line x1="920" y1="30" x2="920" y2="210"/>
+    <line x1="960" y1="30" x2="960" y2="210"/>
+    <line x1="40" y1="60" x2="960" y2="60"/>
+    <line x1="40" y1="180" x2="960" y2="180"/>
+  </g>
+
+  <!-- Title Section -->
+  <g transform="translate(60, 85)">
+    <!-- Brand Icon -->
+    <rect x="0" y="-38" width="54" height="54" rx="12" fill="#0f172a" stroke="#0096d6" stroke-width="2"/>
+    <path d="M 14 -11 L 27 -24 L 40 -11 L 27 2 Z" fill="none" stroke="#06b6d4" stroke-width="2.5"/>
+    <circle cx="27" cy="-11" r="4" fill="#10b981"/>
+
+    <!-- Title and Subtitle -->
+    <text x="74" y="2" class="title-text">SIGNBRIDGE</text>
+    <text x="76" y="32" class="subtitle-text">EDGE AI ISL TRANSLATOR // ZERO-CLOUD ON-DEVICE RUNTIME</text>
+  </g>
+
+  <!-- Architecture Badges -->
+  <g transform="translate(60, 162)">
+    <!-- Badge 1: NPU Engine -->
+    <rect x="0" y="0" width="260" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="16" cy="16" r="4" fill="#10b981" class="beacon"/>
+    <text x="28" y="20" fill="#94a3b8" class="badge-text">HARDWARE:</text>
+    <text x="100" y="20" fill="#38bdf8" class="badge-text font-mono">QUALCOMM HEXAGON NPU</text>
+
+    <!-- Badge 2: Local Privacy -->
+    <rect x="274" y="0" width="220" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="290" cy="16" r="4" fill="#06b6d4" class="beacon"/>
+    <text x="302" y="20" fill="#94a3b8" class="badge-text">PRIVACY:</text>
+    <text x="364" y="20" fill="#10b981" class="badge-text font-mono">CLOUD REQ: 0 (100% LOCAL)</text>
+
+    <!-- Badge 3: Inference Loop -->
+    <rect x="508" y="0" width="200" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="524" cy="16" r="4" fill="#38bdf8" class="beacon"/>
+    <text x="536" y="20" fill="#94a3b8" class="badge-text">LATENCY:</text>
+    <text x="598" y="20" fill="#f8fafc" class="badge-text font-mono">&lt; 15 MS E2E</text>
+
+    <!-- Badge 4: Framework -->
+    <rect x="722" y="0" width="160" height="32" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <circle cx="738" cy="16" r="4" fill="#a855f7" class="beacon"/>
+    <text x="750" y="20" fill="#94a3b8" class="badge-text">SHELL:</text>
+    <text x="798" y="20" fill="#c084fc" class="badge-text font-mono">TAURI 2.0</text>
+  </g>
+</svg>
