@@ -1,0 +1,38 @@
+{
+  "gloss_to_id": {
+    "hello": 0,
+    "thank_you": 1,
+    "water": 2,
+    "name": 3,
+    "help": 4,
+    "include": 5,
+    "father": 6,
+    "mother": 7,
+    "school": 8,
+    "friend": 9,
+    "cislr_sign_1": 10,
+    "cislr_sign_2": 11,
+    "book": 12,
+    "please": 13,
+    "yes": 14,
+    "no": 15
+  },
+  "id_to_gloss": {
+    "0": "hello",
+    "1": "thank_you",
+    "2": "water",
+    "3": "name",
+    "4": "help",
+    "5": "include",
+    "6": "father",
+    "7": "mother",
+    "8": "school",
+    "9": "friend",
+    "10": "cislr_sign_1",
+    "11": "cislr_sign_2",
+    "12": "book",
+    "13": "please",
+    "14": "yes",
+    "15": "no"
+  }
+}

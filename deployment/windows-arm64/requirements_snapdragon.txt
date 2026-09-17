@@ -1,0 +1,12 @@
+# SignBridge Windows ARM64 / Qualcomm Snapdragon NPU Dependencies
+numpy>=1.24.0,<2.1.0
+scipy>=1.11.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+onnx>=1.16.0
+onnxruntime-qnn>=1.19.0
+mediapipe>=0.10.9
+opencv-python>=4.9.0
+qai-hub>=0.40.0
+requests>=2.31.0
